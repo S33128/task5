@@ -21,6 +21,17 @@ public class Wydarzenie {
         this.data = data;
         this.miejsce = miejsce;
     }
+    public boolean zarezerwujMiejsce() {
+        if(dostepneMiejsca<=0){
+            System.out.println("brak miejsc");
+            return false;
+        }
+        this.dostepneMiejsca--;
+        return true;
+    }
+    public String toString(){
+        return this.nazwa;
+    }
 
     public String getNazwa() {
         return nazwa;
@@ -59,6 +70,12 @@ public class Wydarzenie {
     }
 
     public void setDostepneMiejsca(int dostepneMiejsca) {
+        if (dostepneMiejsca < 0) {
+            throw new IllegalArgumentException("liczba miejsc mosi byc wieksza od 0");
+        }
+        if (dostepneMiejsca > maxLiczbaMiejsc) {
+            throw new IllegalArgumentException("dostepna liczba miejsc nie morze byc wieksza niz ich liczba");
+        }
         this.dostepneMiejsca = dostepneMiejsca;
     }
 
@@ -67,6 +84,9 @@ public class Wydarzenie {
     }
 
     public void setCena(double cena) {
+        if(cena<0){
+            throw new IllegalArgumentException("Cena musi byc wieksza od zera");
+        }
         this.cena = cena;
     }
 
