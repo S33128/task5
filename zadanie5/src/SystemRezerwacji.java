@@ -47,5 +47,6 @@ public class SystemRezerwacji {
          this.ListaRezerwacji.add(w);
          this.listaKlientow.add(k);
          w.zarezerwujMiejsce();
+         k.dodajRezerwacje(w);
     }
 }
